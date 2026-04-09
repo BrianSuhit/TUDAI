@@ -1,5 +1,9 @@
 public class Ejercicio3 {
-    
+/*
+Escribir un programa que solicite el ingreso de un número mayor a
+50, y lo muestre por pantalla en caso de ser múltiplo de 2 o 3, sino
+muestre un mensaje que informe dicha situación.
+*/
     public static void main(String[] args) {
         
         int numero = 0;

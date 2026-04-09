@@ -10,6 +10,11 @@ b. si ambos son múltiplos de 2.
         int numero1 = 0;
         int numero2 = 0;
 
+        /*
+            NOTA: preguntar al profe por esto
+            NOTA DEL PROFE: dijo que si puedo declarar e inicializar las variables arriba
+             mejor, asi quedan agrupadas y es mas prolijo de leer.
+        */
         boolean condicicionA = false;
         boolean condicicionB = false;
 
