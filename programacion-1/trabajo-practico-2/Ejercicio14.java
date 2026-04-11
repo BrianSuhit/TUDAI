@@ -23,11 +23,20 @@ error y pedir nuevamente el carácter.
         System.out.println("ingrese un numero entero positivo");
         numero = Utils.leerInt();
 
+        /*
+        NOTA DEL PROFE: USO NUMERO UNO, NO VI BIEN QUE USO EN EL WHILE PERO SU MANERA IMPLICABA
+        NO PEDIR 2 VECES EL INGRESO AL USUARIO ( YO LO HAGO AFUERA DEL WHILE Y ADENTRO AL FINAL DEL WHILE)
+            int numero = -1;
+        */
         while (numero != 0) {
            
             System.out.println("ingrese un caracter");
             char caracter = Utils.leerChar();
 
+            /*
+                NOTA DEL PROFE:
+                uso un booleano para comprobar que caracterValido = false para que ingrese los correctos
+            */
             while (caracter != 'a' && caracter != 'b' && caracter != 'c'){
                 System.out.println("Error. Ingrese nuevamente el carácter ('a', 'b' o 'c'):");
                 caracter = Utils.leerChar();
@@ -41,6 +50,7 @@ error y pedir nuevamente el carácter.
                         break;
                     case 'b':
                         /*
+                        NOTA DEL PROFE: ESTO LO HIZO ASI EL DE TODAS MANERAS DIJO QUE EL MIO ESTABA BIEN
                         int numeroanterior = -1
                         boolean esAscendente = true
                         final int MAX = 5

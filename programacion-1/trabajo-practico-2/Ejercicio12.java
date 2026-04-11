@@ -18,7 +18,6 @@ Pedir por consola 15 caracteres. Imprimir la mayor cantidad de
             caracter = Utils.leerChar();
 
             if(caracter == 'a'){
-                // necesitaba contar las seguidas asique debia hacer un if de racha actual y maxima
                 cantidadActual++;
                 if(cantidadActual > cantidadMaxima){
                     cantidadMaxima = cantidadActual;
@@ -33,6 +32,10 @@ Pedir por consola 15 caracteres. Imprimir la mayor cantidad de
 
         //----------------------------------------------------
 
+        /*
+        NOTA DEL PROFE: ASI LO HIZO EL, FUE LA CLASE VIRTUAL NO ME EXPLICO DIRECTAMENTE
+         PERO CREO QUE CONSIDERO "BUENA PRACTICA" QUE EL CANTIDAD++ NO ESTE CONSTANTEMENTE CALCULANDO
+        */
         for(int i = 0; i < MAX_CARACTERES; i++) {
             System.out.println("ingrese un caracter");
             caracter = Utils.leerChar();
@@ -50,8 +53,5 @@ Pedir por consola 15 caracteres. Imprimir la mayor cantidad de
         if (cantidadActual > cantidadMaxima) {
             cantidadMaxima = cantidadActual;
         }
-
-
-
     }
 }
