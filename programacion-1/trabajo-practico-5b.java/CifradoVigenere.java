@@ -26,9 +26,10 @@ iguales que iguale o supere la longitud de la clave.
         /* resultado que se debe verificar:
             |   | i | q | o | b |   | e | r | n | q |   | h | t | v | d | t |
         */
+       procesarCifrado(V);
     }
 
-    public static void procesarCifrado(int[] arr){
+    public static void procesarCifrado(char[] arr){
         int ini = 0, fin = -1;
 
         while(ini < arr.length){
@@ -62,14 +63,14 @@ iguales que iguale o supere la longitud de la clave.
         return ini == fin;
     }
 
-    public static int buscarInicio(int[] arr, int pos) {
+    public static int buscarInicio(char[] arr, int pos) {
         while(pos < arr.length && arr[pos] < SEPARADOR){
             pos++;
         }
         return pos;
     }
 
-    public static int buscarFin(int[] arr, int pos) {
+    public static int buscarFin(char[] arr, int pos) {
         while(pos < arr.length && arr[pos] >= SEPARADOR){
             pos++;
         }

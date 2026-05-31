@@ -1,5 +1,10 @@
 public class RendimientoDeSucursales {
-
+/*
+Dominio: Rendimiento de Sucursales
+Una cadena de tiendas registra las ventas diarias de sus sucursales en un arreglo de secuencias A (separadas por ceros). Cada secuencia representa las ventas de una sucursal distinta (la primera secuencia corresponde a la Sucursal 0, la segunda a la Sucursal 1, etc.). Por otro lado, la gerencia tiene un arreglo normal B que contiene el objetivo de venta promedio diario esperado para cada sucursal.
+int[] A = {0, 100, 120, 110, 0, 300, 100, 0, 450, 450, 0}; int[] B = {100, 250, 400}; int[] C = new int; (vacío, mismo tamaño que B)
+Consigna: Recorrer el arreglo A. Por cada secuencia, calcular el promedio de ventas de esa sucursal. Luego, calcular la diferencia entre ese promedio obtenido y el objetivo estipulado para esa sucursal en el arreglo B. Guardar ese resultado final en la posición correspondiente del arreglo C y retornarlo.
+*/
     public static final int SEPARADOR = 0;
     public static void main(String[] args) {
         int[] A = {0, 100, 120, 110, 0, 300, 100, 0, 450, 450, 0};
@@ -35,14 +40,14 @@ public class RendimientoDeSucursales {
     }
 
     public static int calcularPromedio(int[] arr, int ini, int fin){
-        int tamaño = fin - ini + 1;
         int suma = 0;
 
         for(int i = ini; i <= fin; i++){
             suma = suma + arr[i];
         }
 
-        int promedio = suma / tamaño; /* ahorro de calcular tamaño arriba: int promedio = suma / fin - ini + 1; */
+        // double promedioExacto = (double) suma / (fin - ini + 1);
+        int promedio = suma / (fin - ini + 1);
         return promedio;
     }
 
