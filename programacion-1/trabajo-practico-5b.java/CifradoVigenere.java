@@ -21,46 +21,73 @@ iguales que iguale o supere la longitud de la clave.
 
     public static void main(String[] args) {
         
-        char[] V = {' ', 'h', 'o', 'l', 'a', ' ', 'c', 'o', 'm', 'o', ' ', 'e', 's', 't', 'a', 's', ' '};
+        char[] mensaje = {' ', 'h', 'o', 'l', 'a', ' ', 'c', 'o', 'm', 'o', ' ', 'e', 's', 't', 'a', 's', ' '};
+        int[] clave = {1, 2, 3};
+        
+        System.out.println("Mensaje Original:");
+        mostrarArreglo(mensaje);
 
-        /* resultado que se debe verificar:
-            |   | i | q | o | b |   | e | r | n | q |   | h | t | v | d | t |
-        */
-       procesarCifrado(V);
+        // El main solo delega en el Director
+        procesarMensaje(mensaje, clave);
+
+        System.out.println("Mensaje Encriptado:");
+        mostrarArreglo(mensaje);
     }
 
-    public static void procesarCifrado(char[] arr){
-        int ini = 0, fin = -1;
+    public static void procesarMensaje(char[] mensaje, int[] clave) {
+        int ini = 0;
+        int fin = -1;
+        int posclave = 0; // Se mantiene viva entre secuencias
 
-        while(ini < arr.length){
-            ini = buscarInicio(arr, fin + 1);
-
-            if(ini < arr.length){
-                fin = buscarFin(arr, ini);
-
-
+        while (ini < mensaje.length) {
+            ini = buscarInicio(mensaje, fin + 1);
+            
+            if (ini < mensaje.length) {
+                fin = buscarFin(mensaje, ini);
+                
+                // Si NO tiene elementos repetidos, lo mandamos a encriptar
+                if (!elementosRepetidos(mensaje, ini, fin, clave.length)) {
+                    posclave = encriptar(mensaje, ini, fin, clave, posclave);
+                }
             }
         }
-
     }
 
-    public static boolean elementosRepetidos(int[] mensaje, int ini, int fin, int[] clave){
-        if(fin - ini + 1 != clave.length){
-            return false;
-        }
+    public static boolean elementosRepetidos(char[] mensaje, int ini, int fin, int tamanioClave) {
+        int tamanio = fin - ini + 1;
+        if (tamanio < tamanioClave) return false;
 
-        int repetidos = 0;
+        int repetidos = 1;
+        boolean rachaEncontrada = false;
+        int i = ini;
 
-        while(ini < fin && fin - ini + 1 >= clave.length && repetidos < clave.length){
-            if(mensaje[ini] == mensaje[ini + 1]){
+        // El ciclo avanza MIENTRAS no llegue al final Y no haya encontrado la racha [cite: 84]
+        while (i < fin && !rachaEncontrada) {
+            if (mensaje[i] == mensaje[i + 1]) {
                 repetidos++;
+                if (repetidos == tamanioClave) {
+                    rachaEncontrada = true; // Activa la bandera y el while se corta solo [cite: 5, 84]
+                }
+            } else {
+                repetidos = 1; // Se rompió la racha, reseteamos el contador
             }
-            else{
-                repetidos = 0;
-                ini++;
+            i++;
+        }
+        
+        return rachaEncontrada;
+    }
+
+    public static int encriptar(char[] mensaje, int ini, int fin, int[] clave, int posclave) {
+        for (int i = ini; i <= fin; i++) {
+            mensaje[i] = (char) (mensaje[i] + clave[posclave]);
+            posclave++;
+            
+            // Si nos pasamos de la clave, volvemos a empezar
+            if (posclave == clave.length) {
+                posclave = 0;
             }
         }
-        return ini == fin;
+        return posclave; // Retornamos en qué índice de la clave nos quedamos
     }
 
     public static int buscarInicio(char[] arr, int pos) {
@@ -75,5 +102,11 @@ iguales que iguale o supere la longitud de la clave.
             pos++;
         }
         return pos - 1;
+    }
+
+    public static void mostrarArreglo(char[] arr) {
+        for (int pos = 0; pos < arr.length; pos++)
+            System.out.print(" | " + arr[pos]);
+        System.out.println();
     }
 }

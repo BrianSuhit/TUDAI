@@ -28,8 +28,6 @@ posiciones que son consonantes.
         int pos = 0;
 
         for(pos = 0; pos < arreglo.length; pos++){
-            
-
 
             if(esVocal(arreglo[pos])){
                 arregloVocales[contadorPosVocal] = pos;
