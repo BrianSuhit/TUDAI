@@ -27,7 +27,6 @@ iguales que iguale o supere la longitud de la clave.
         System.out.println("Mensaje Original:");
         mostrarArreglo(mensaje);
 
-        // El main solo delega en el Director
         procesarMensaje(mensaje, clave);
 
         System.out.println("Mensaje Encriptado:");
@@ -37,7 +36,7 @@ iguales que iguale o supere la longitud de la clave.
     public static void procesarMensaje(char[] mensaje, int[] clave) {
         int ini = 0;
         int fin = -1;
-        int posclave = 0; // Se mantiene viva entre secuencias
+        int posclave = 0;
 
         while (ini < mensaje.length) {
             ini = buscarInicio(mensaje, fin + 1);
@@ -45,7 +44,6 @@ iguales que iguale o supere la longitud de la clave.
             if (ini < mensaje.length) {
                 fin = buscarFin(mensaje, ini);
                 
-                // Si NO tiene elementos repetidos, lo mandamos a encriptar
                 if (!elementosRepetidos(mensaje, ini, fin, clave.length)) {
                     posclave = encriptar(mensaje, ini, fin, clave, posclave);
                 }
@@ -61,15 +59,14 @@ iguales que iguale o supere la longitud de la clave.
         boolean rachaEncontrada = false;
         int i = ini;
 
-        // El ciclo avanza MIENTRAS no llegue al final Y no haya encontrado la racha [cite: 84]
         while (i < fin && !rachaEncontrada) {
             if (mensaje[i] == mensaje[i + 1]) {
                 repetidos++;
                 if (repetidos == tamanioClave) {
-                    rachaEncontrada = true; // Activa la bandera y el while se corta solo [cite: 5, 84]
+                    rachaEncontrada = true; 
                 }
             } else {
-                repetidos = 1; // Se rompió la racha, reseteamos el contador
+                repetidos = 1;
             }
             i++;
         }
@@ -82,12 +79,11 @@ iguales que iguale o supere la longitud de la clave.
             mensaje[i] = (char) (mensaje[i] + clave[posclave]);
             posclave++;
             
-            // Si nos pasamos de la clave, volvemos a empezar
             if (posclave == clave.length) {
                 posclave = 0;
             }
         }
-        return posclave; // Retornamos en qué índice de la clave nos quedamos
+        return posclave;
     }
 
     public static int buscarInicio(char[] arr, int pos) {

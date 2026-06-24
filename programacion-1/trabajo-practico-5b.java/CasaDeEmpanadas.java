@@ -1,5 +1,22 @@
-public class CasaDeEmpanadasCorregido {
-
+public class CasaDeEmpanadas {
+/*
+Casa de empanadas
+Los pedidos que recibe una casa de empanadas se almacenan en un arreglo E de tamaño MAXE. Cada tipo
+de empanada se almacena con un número diferente, por ejemplo, el 5 representa la empanada de carne
+cortada a cuchillo mientras que el 7 representa la empanada de roquefort. Cada pedido está separado por
+uno o más números negativos (ya que los códigos son todos valores positivos incluyendo el 0). Para facilitar
+el proceso de producción los códigos de las empanadas están almacenadas en forma ascendente. En el
+siguiente ejemplo, tenemos 3 pedidos. El primero incluye 2 empanadas de carne cortada a cuchillo (5) y 2 de
+roquefort (7).
+-1 5 5 7 7 -6 4 9 10 -4 1 1 2 7 -9 -8
+Si un cliente se olvida de alguna empanada, puede agregarla luego de realizado el pedido. Para ellos debe
+indicar el número de pedido (es el orden del pedido dentro del arreglo) y el gusto de la empanada que quiere
+agregar.
+Se pide implementar un programa en Java que permita incorporar la empanada faltante al pedido del cliente.
+Siguiendo con el ejemplo, si el cliente quiere agregar una empanada de roquefort en el pedido 2. El arreglo
+resultante debería ser:
+-1 5 5 7 7 -6 4 7 9 10 -4 1 1 2 7 -9
+*/
     public static final int SEC_PEDIDO = 2;
 
     public static void main(String[] args){
